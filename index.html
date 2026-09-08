@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freshers 2026 | You Are Cordially Invited</title>
+  <meta name="description" content="Official invitation to the Freshers Party 2026. Join us for a day of elegance, music, and celebration.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Italianno&family=Montserrat:wght@300;400;500;600;700&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+</head>
+<body>
+  <!-- Ambient Particle Canvas -->
+  <canvas id="ambient-canvas" class="ambient-canvas"></canvas>
+
+  <!-- ==============================================
+       ROYAL ENVELOPE LANDING SCREEN (Passcode Protected)
+       ============================================== -->
+  <div class="envelope-portal" id="envelope-portal">
+    <div class="envelope-perspective-wrap">
+      
+      <!-- Envelope Folio Container -->
+      <div class="envelope-folio" id="envelope-folio">
+        
+        <!-- Top and Bottom Folio Flaps for 3D Letter Opening -->
+        <div class="folio-flap flap-top" id="flap-top"></div>
+        <div class="folio-flap flap-bottom" id="flap-bottom"></div>
+        
+        <!-- Lace Belly Band with Ruby Brooch Clasp -->
+        <div class="folio-belly-band" id="folio-band">
+          <div class="band-lace lace-left"></div>
+          <div class="ruby-brooch" id="ruby-brooch" aria-hidden="true">
+            <div class="ruby-facet-glow"></div>
+            <div class="ruby-gem-core"></div>
+            <div class="ruby-sparkle-halo"></div>
+          </div>
+          <div class="band-lace lace-right"></div>
+        </div>
+
+        <!-- Small Passcode Entry Box -->
+        <div class="passkey-card" id="passkey-card">
+          <h2 class="passkey-heading">SECRET PASS KEY</h2>
+
+          <form id="passkey-form" onsubmit="handlePasskeySubmit(event)" autocomplete="off">
+            <div class="passkey-underline-wrap">
+              <input type="text" maxlength="16" class="passkey-underline-input" id="passkey-input" autocomplete="off" autofocus aria-label="Secret pass key" spellcheck="false" autocorrect="off" autocapitalize="characters">
+              <div class="passkey-underline-bar"></div>
+            </div>
+
+            <div class="passkey-feedback" id="passkey-feedback" aria-live="polite"></div>
+
+            <button type="submit" class="btn-unseal" id="btn-unseal">
+              <span>Unseal Invitation</span>
+              <svg class="unseal-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Top Persistent Header Controls -->
+  <header class="top-nav" id="top-nav">
+    <div class="nav-brand">
+      <span class="brand-crest">✦</span>
+      <span class="brand-title">REVERIE ’26</span>
+    </div>
+  </header>
+
+  <!-- Floating Side Navigation Dots -->
+  <nav class="side-nav" id="side-nav" aria-label="Section Navigation">
+    <button class="nav-dot active" data-index="0" aria-label="Go to Invitation Cover">
+      <span class="dot-label">Invitation</span>
+      <span class="dot-indicator"></span>
+    </button>
+    <button class="nav-dot" data-index="1" aria-label="Go to Event Details">
+      <span class="dot-label">Details</span>
+      <span class="dot-indicator"></span>
+    </button>
+    <button class="nav-dot" data-index="2" aria-label="Go to Itinerary & RSVP">
+      <span class="dot-label">Itinerary</span>
+      <span class="dot-indicator"></span>
+    </button>
+  </nav>
+
+  <!-- Main Scroll Container -->
+  <main class="scroll-container" id="scroll-container">
+
+    <!-- ==============================================
+         SECTION 1: HERO / COVER (Image 1: Dark Crimson Floral)
+         ============================================== -->
+    <section class="snap-section section-cover" id="section-1">
+      <div class="section-overlay hero-gradient"></div>
+      
+      <div class="hero-content">
+        <!-- Personalized Recipient Calligraphy Header -->
+        <div class="recipient-crest-block fade-in-item" id="recipient-block">
+          <h2 class="recipient-name calligraphy-font" id="guest-name-display">Viswanath</h2>
+          <div class="royal-subtitle">CORDIALLY INVITING YOU TO</div>
+        </div>
+
+        <h1 class="main-title gold-shimmer-text fade-in-item">
+          REVERIE ’26
+        </h1>
+        
+        <p class="hero-tagline fade-in-item">
+          A Day of Radiance, Glamour &amp; New Beginnings
+        </p>
+
+        <div class="hero-divider fade-in-item">
+          <span class="divider-line"></span>
+          <span class="divider-diamond">◆</span>
+          <span class="divider-line"></span>
+        </div>
+
+        <!-- Live Countdown -->
+        <div class="countdown-wrapper fade-in-item">
+          <div class="countdown-box">
+            <span class="countdown-val" id="days">03</span>
+            <span class="countdown-unit">Days</span>
+          </div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-box">
+            <span class="countdown-val" id="hours">20</span>
+            <span class="countdown-unit">Hours</span>
+          </div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-box">
+            <span class="countdown-val" id="mins">47</span>
+            <span class="countdown-unit">Mins</span>
+          </div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-box">
+            <span class="countdown-val" id="secs">30</span>
+            <span class="countdown-unit">Secs</span>
+          </div>
+        </div>
+
+        <!-- Action CTA -->
+        <div class="hero-actions fade-in-item">
+          <button class="btn-royal-gold" onclick="goToSection(1)">
+            <span>Unveil The Invitation</span>
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <button class="scroll-prompt" onclick="goToSection(1)" aria-label="Scroll down to details">
+        <span class="prompt-text">Scroll to Explore</span>
+        <div class="chevron-arrow"></div>
+      </button>
+    </section>
+
+    <!-- ==============================================
+         SECTION 2: DETAILS (Image 2: Burgundy Top + Cream Bottom with 3 Icons)
+         ============================================== -->
+    <section class="snap-section section-details" id="section-2">
+      <!-- Outer Stage Frame to ensure crisp alignment on all viewports -->
+      <div class="details-stage">
+        
+        <!-- Top Half (Burgundy Backdrop Area) -->
+        <div class="details-top-area">
+          <div class="details-header-content">
+            <span class="section-kicker">THE GRAND CELEBRATION</span>
+            <h2 class="details-heading">Welcome, Class of 2026</h2>
+            <p class="details-desc">
+              Step into an extraordinary day crafted in your honor. Together, we toast to the dawn 
+              of lifelong friendships, untamed ambitions, and unforgettable memories.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bottom Half (Cream Parchment Area with 3 Baked-in Icons) -->
+        <div class="details-bottom-area">
+          <div class="details-grid">
+            
+            <!-- Column 1: Venue -->
+            <div class="detail-column" id="col-venue">
+              <h3 class="col-title">THE VENUE</h3>
+              <p class="col-highlight">Vaughn Seminar Hall</p>
+              <p class="col-sub">1st years block</p>
+              <a href="https://maps.app.goo.gl/oA5nHXUZU8bDJyHH7" target="_blank" rel="noopener noreferrer" class="col-link">
+                <span>View Campus Map ↗</span>
+              </a>
+            </div>
+
+            <!-- Column 2: Date & Time -->
+            <div class="detail-column" id="col-date">
+              <h3 class="col-title">DATE &amp; TIME</h3>
+              <p class="col-highlight">Friday, September 11, 2026</p>
+              <p class="col-sub">Assembly at 9:30 AM • Starts at 10:00 AM</p>
+              <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=REVERIE+%2726+-+Freshers+Celebration&dates=20260911T043000Z/20260911T110000Z&details=You+are+cordially+invited+to+REVERIE+%2726+(Freshers+Celebration)+at+Vaughn+Seminar+Hall.%0A%0AAssembly+at+9%3A30+AM%2C+Inauguration+at+10%3A00+AM%2C+Cultural+Events%2C+Lunch+Banquet%2C+Investiture+%26+DJ+Celebration.%0A%0ACampus+Map%3A+https%3A%2F%2Fmaps.app.goo.gl%2FoA5nHXUZU8bDJyHH7&location=Vaughn+Seminar+Hall%2C+Main+Campus&ctz=Asia/Kolkata" target="_blank" rel="noopener noreferrer" class="col-link-btn" onclick="addToCalendar()">
+                <span>Add To Calendar ↗</span>
+              </a>
+            </div>
+
+            <!-- Column 3: Celebration & Attire -->
+            <div class="detail-column" id="col-attire">
+              <h3 class="col-title">CELEBRATION &amp; ATTIRE</h3>
+              <p class="col-highlight">Old Money Outfits</p>
+              <p class="col-sub">Investiture, Lunch Banquet &amp; Celebration</p>
+              <button type="button" class="col-link-btn" onclick="openDressCodeModal()">
+                <span>View Style Guide ↗</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll Indicator -->
+      <button class="scroll-prompt dark-prompt" onclick="goToSection(2)" aria-label="Scroll down to timeline">
+        <span class="prompt-text">View Event Itinerary</span>
+        <div class="chevron-arrow"></div>
+      </button>
+    </section>
+
+    <!-- ==============================================
+         SECTION 3: TIMELINE & RSVP (Image 3: 6 Timeline Icons + Golden Laurel Wreath)
+         ============================================== -->
+    <section class="snap-section section-timeline" id="section-3">
+      <div class="timeline-stage">
+        
+        <!-- Top Title Area -->
+        <div class="timeline-top-area">
+          <span class="section-kicker">THE ORDER OF EVENTS</span>
+          <h2 class="timeline-heading">Schedule of Celebrations</h2>
+        </div>
+
+        <!-- Middle Timeline Band (Overlaid across the 6 icons) -->
+        <div class="timeline-middle-area">
+          <div class="timeline-nodes-grid">
+            
+            <!-- Node 1: Building (Vaughn Seminar Hall) -->
+            <div class="timeline-node node-pos-1" data-time="10:00 AM">
+              <div class="node-card">
+                <span class="node-time">10:00 AM</span>
+                <h4 class="node-title">Vaughn Seminar Hall</h4>
+                <p class="node-desc">Assembly &amp; Welcome</p>
+              </div>
+            </div>
+
+            <!-- Node 2: Microphone (Inauguration) -->
+            <div class="timeline-node node-pos-2" data-time="10:45 AM">
+              <div class="node-card">
+                <span class="node-time">10:45 AM</span>
+                <h4 class="node-title">Inauguration</h4>
+                <p class="node-desc">Welcome Address</p>
+              </div>
+            </div>
+
+            <!-- Node 3: Dancing Couple (Cultural Events) -->
+            <div class="timeline-node node-pos-3" data-time="11:30 AM">
+              <div class="node-card">
+                <span class="node-time">11:30 AM</span>
+                <h4 class="node-title">Cultural Events</h4>
+                <p class="node-desc">Performances &amp; Talent</p>
+              </div>
+            </div>
+
+            <!-- Node 4: Dining Plate & Cutlery (Lunch) -->
+            <div class="timeline-node node-pos-4" data-time="01:00 PM">
+              <div class="node-card">
+                <span class="node-time">01:00 PM</span>
+                <h4 class="node-title">Lunch</h4>
+                <p class="node-desc">Buffet &amp; Refreshments</p>
+              </div>
+            </div>
+
+            <!-- Node 5: Camera (Investiture) -->
+            <div class="timeline-node node-pos-5" data-time="02:15 PM">
+              <div class="node-card">
+                <span class="node-time">02:15 PM</span>
+                <h4 class="node-title">Investiture</h4>
+                <p class="node-desc">Ceremony &amp; Badges</p>
+              </div>
+            </div>
+
+            <!-- Node 6: Music Notes (DJ Party) -->
+            <div class="timeline-node node-pos-6" data-time="03:15 PM">
+              <div class="node-card">
+                <span class="node-time">03:15 PM</span>
+                <h4 class="node-title">DJ &amp; Celebration</h4>
+                <p class="node-desc">Music &amp; Dance Floor</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Area: Pure Coded Royal Monogram, Freshers 2026 -->
+      <div class="timeline-bottom-area">
+        
+        <!-- Return To Top Button removed for now -->
+
+        <!-- Coded Royal CS Monogram & Typography (Centered inside the background circle) -->
+        <div class="royal-circle-content">
+          
+          <!-- Spaced Royal CS Monogram -->
+          <div class="monogram-lockup">
+            <span class="mono-char mono-c">C</span>
+            <span class="mono-char mono-s">S</span>
+          </div>
+
+          <!-- Freshers 2026 Typography & Flourish -->
+          <div class="crest-text-lockup">
+            <span class="crest-freshers">FRESHERS</span>
+            <span class="crest-year">2026</span>
+            <div class="crest-ornament">
+              <span class="ornament-line"></span>
+              <span class="ornament-diamond">❖</span>
+              <span class="ornament-line"></span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==============================================
+       RSVP & DIGITAL PASS MODAL
+       ============================================== -->
+  <div class="modal-backdrop hidden" id="rsvp-modal" onclick="handleBackdropClick(event)">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeRsvpModal()" aria-label="Close modal">✕</button>
+
+      <!-- Step 1: Form -->
+      <div id="rsvp-step-form" class="modal-step active">
+        <div class="modal-header">
+          <span class="modal-badge">ROYAL INVITATION</span>
+          <h3 class="modal-title">Reserve Your Seat</h3>
+          <p class="modal-desc">Please enter your details to claim your personalized entry pass for Freshers 2026.</p>
+        </div>
+
+        <form id="rsvp-form" onsubmit="handleRsvpSubmit(event)">
+          <div class="form-group">
+            <label for="guest-name">Full Name *</label>
+            <input type="text" id="guest-name" required placeholder="e.g. Alex Morgan" autocomplete="name">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group half">
+              <label for="guest-roll">Roll / Registration ID *</label>
+              <input type="text" id="guest-roll" required placeholder="e.g. CS26-104">
+            </div>
+            <div class="form-group half">
+              <label for="guest-dept">Department / Stream</label>
+              <select id="guest-dept">
+                <option value="Computer Science">Computer Science &amp; IT</option>
+                <option value="Electronics & Comm">Electronics &amp; Comm</option>
+                <option value="Mechanical">Mechanical Engineering</option>
+                <option value="Business Admin">Business Administration</option>
+                <option value="Design & Arts">Design &amp; Media Arts</option>
+                <option value="Other Department">Other Department</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group half">
+              <label for="guest-diet">Dietary Preference</label>
+              <select id="guest-diet">
+                <option value="Vegetarian Gourmet">Vegetarian Gourmet</option>
+                <option value="Non-Vegetarian Banquet">Non-Vegetarian Banquet</option>
+                <option value="Vegan">Vegan Delight</option>
+              </select>
+            </div>
+            <div class="form-group half">
+              <label for="guest-track">DJ Song Request</label>
+              <input type="text" id="guest-track" placeholder="Favorite party anthem">
+            </div>
+          </div>
+
+          <button type="submit" class="btn-royal-gold submit-btn" id="generate-pass-btn">
+            <span>Generate Royal Entry Pass ✦</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Step 2: Generated Luxury Pass -->
+      <div id="rsvp-step-pass" class="modal-step">
+        <div class="pass-success-banner">
+          <span class="success-icon">✓</span>
+          <h4>Invitation Confirmed!</h4>
+          <p>We are delighted to welcome you to Freshers 2026.</p>
+        </div>
+
+        <!-- Physical Ticket Style Pass -->
+        <div class="digital-pass-card" id="digital-pass-card">
+          <div class="pass-gold-border"></div>
+          <div class="pass-top">
+            <div class="pass-brand">FRESHERS ’26 • OFFICIAL ENTRY PASS</div>
+            <div class="pass-code" id="pass-code-val">PASS #FR26-8942</div>
+          </div>
+          
+          <div class="pass-body">
+            <div class="pass-guest-info">
+              <span class="pass-label">HONORED GUEST</span>
+              <h2 class="pass-guest-name" id="pass-guest-name">Alex Morgan</h2>
+              <div class="pass-meta">
+                <div><span class="meta-title">Department:</span> <span id="pass-dept-val">Computer Science</span></div>
+                <div><span class="meta-title">ID:</span> <span id="pass-roll-val">CS26-104</span></div>
+                <div><span class="meta-title">Date:</span> <span>Sep 11, 2026 • 10:00 AM</span></div>
+                <div><span class="meta-title">Venue:</span> <span>Vaughn Seminar Hall</span></div>
+              </div>
+            </div>
+
+            <div class="pass-qr-zone">
+              <canvas id="pass-qr-canvas" width="110" height="110"></canvas>
+              <span class="qr-caption">Scan at Gates</span>
+            </div>
+          </div>
+
+          <div class="pass-footer">
+            <span>Non-Transferable • Dress Code: Old Money Outfits</span>
+          </div>
+        </div>
+
+        <div class="pass-actions">
+          <button class="btn-royal-gold" onclick="downloadPass()">
+            <span>Download Pass (PNG)</span>
+          </button>
+          <button class="btn-royal-outline" onclick="closeRsvpModal()">
+            <span>Done</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dress Code Modal -->
+  <div class="modal-backdrop hidden" id="dress-modal" onclick="handleDressModalClick(event)">
+    <div class="modal-dialog small-dialog">
+      <button class="modal-close-btn" onclick="closeDressModal()">✕</button>
+      <div class="modal-header">
+        <span class="modal-badge">STYLE &amp; AESTHETICS</span>
+        <h3 class="modal-title">Dress Code Guide</h3>
+      </div>
+      <div class="dress-guide-content">
+        <div class="dress-card">
+          <div class="dress-badge">Gentlemen</div>
+          <h4>Old Money Classic</h4>
+          <p>Crisp tailored blazers, classic oxford button-downs, structured suits, pleated trousers, leather loafers, vintage ties, and timeless understated accessories.</p>
+        </div>
+        <div class="dress-card">
+          <div class="dress-badge">Ladies</div>
+          <h4>Old Money Chic</h4>
+          <p>Refined tailored silhouettes, vintage tweed or satin dresses, elegant midi dresses, sophisticated neutral ensembles, pearl accents, and quiet luxury styling.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add to Calendar Modal -->
+  <div class="modal-backdrop hidden" id="calendar-modal" onclick="handleCalendarModalClick(event)">
+    <div class="modal-dialog small-dialog">
+      <button class="modal-close-btn" onclick="closeCalendarModal()">✕</button>
+      <div class="modal-header">
+        <span class="modal-badge">SAVE THE DATE</span>
+        <h3 class="modal-title">Add To Calendar</h3>
+      </div>
+      <div class="calendar-modal-content">
+        <div class="calendar-event-summary">
+          <div class="cal-summary-title">REVERIE ’26 • Freshers Party</div>
+          <div class="cal-summary-details">
+            <div>📅 <strong>Friday, September 11, 2026</strong></div>
+            <div>⏰ <strong>10:00 AM – 04:30 PM IST</strong> (Assembly: 9:30 AM)</div>
+            <div>📍 <strong>Vaughn Seminar Hall</strong> (Main Campus)</div>
+          </div>
+        </div>
+
+        <div class="calendar-buttons-grid">
+          <button class="btn-royal-gold full-width cal-btn" onclick="addGoogleCalendar()">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/></svg>
+            <span>Google Calendar (Online)</span>
+          </button>
+
+          <button class="btn-royal-outline full-width cal-btn" onclick="downloadIcsCalendar()">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            <span>Apple / Outlook / iCal (.ics)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas for RSVP Celebration -->
+  <canvas id="confetti-canvas" class="confetti-canvas pointer-events-none"></canvas>
+
+  <!-- JavaScript -->
+  <script src="js/main.js?v=2.1"></script>
+</body>
+</html>
