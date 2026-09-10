@@ -34,7 +34,7 @@ const GUEST_REGISTRY = {
 
   // Faculty Roster
   "REVXXIII": { name: "Dr. V. Sowmya Devi" },
-  "REVXXIV": { name: "Nanda Kishore", tagline: "invites CICC" },
+  "REVXXIV": { name: "Akshay", tagline: "invites CICC" },
   "REVXXV": { name: "Dr. N.P Seeja" },
   "REVXXVI": { name: "Miss Aruna" },
   "REVXXVII": { name: "Dr. D. Kondaya" },
@@ -158,7 +158,7 @@ function syncTaglineFromDOM() {
     const currentName = (guestDisplay.textContent || '').trim().toLowerCase();
     if (currentName.includes('abhi reddy')) {
       applyTaglineText('invites SPC');
-    } else if (currentName.includes('nanda kishore')) {
+    } else if (currentName.includes('akshay') || currentName.includes('nanda kishore')) {
       applyTaglineText('invites CICC');
     }
   }
@@ -185,7 +185,7 @@ function updateRecipient(guestOrName) {
     const lower = name.trim().toLowerCase();
     if (lower.includes('abhi reddy')) {
       tagline = 'invites SPC';
-    } else if (lower.includes('nanda kishore')) {
+    } else if (lower.includes('akshay') || lower.includes('nanda kishore')) {
       tagline = 'invites CICC';
     }
   } else if (guestOrName && typeof guestOrName === 'object') {
@@ -195,7 +195,7 @@ function updateRecipient(guestOrName) {
       tagline = guestOrName.tagline;
     } else if (lower.includes('abhi reddy')) {
       tagline = 'invites SPC';
-    } else if (lower.includes('nanda kishore')) {
+    } else if (lower.includes('akshay') || lower.includes('nanda kishore')) {
       tagline = 'invites CICC';
     }
   }
