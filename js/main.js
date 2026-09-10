@@ -35,7 +35,7 @@ const GUEST_REGISTRY = {
   // Faculty Roster
   "REVXXIII": { name: "Dr. V. Sowmya Devi" },
   "REVXXIV": { name: "Nanda Kishore", tagline: "invites CICC" },
-  "REVXXV": { name: "Mr. K. Gnaneshwar" },
+  "REVXXV": { name: "Dr. N.P Seeja" },
   "REVXXVI": { name: "Mr. M. Raju" },
   "REVXXVII": { name: "Mrs. N. Sowjanya" },
   "REVXXVIII": { name: "Mr. P. Mallikarjun" },
