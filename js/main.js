@@ -12,7 +12,7 @@ const GUEST_REGISTRY = {
   "REVI": { name: "Juan Emmanuel" },
   "REVII": { name: "Likhita" },
   "REVIII": { name: "Visista Soufalya" },
-  "REVIV": { name: "Aakash Reddy" },
+  "REVIV": { name: "Akash Reddy" },
   "REVV": { name: "Sreenidhi" },
   "REVVI": { name: "Veekshith" },
   "REVVII": { name: "Venky" },
