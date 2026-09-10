@@ -137,26 +137,57 @@ function initPasskeySystem() {
     }
   } else if (nameParam) {
     updateRecipient(nameParam);
+  } else {
+    // Initial sync based on default HTML content
+    syncTaglineFromDOM();
   }
+
+  // Setup observer on guest-name-display to auto-update tagline whenever name changes
+  const guestDisplay = document.getElementById('guest-name-display');
+  if (guestDisplay && window.MutationObserver) {
+    const observer = new MutationObserver(() => {
+      syncTaglineFromDOM();
+    });
+    observer.observe(guestDisplay, { childList: true, characterData: true, subtree: true });
+  }
+}
+
+function syncTaglineFromDOM() {
+  const guestDisplay = document.getElementById('guest-name-display');
+  if (guestDisplay) {
+    const currentName = (guestDisplay.textContent || '').trim().toLowerCase();
+    if (currentName.includes('abhi reddy')) {
+      applyTaglineText('invites SPC');
+    }
+  }
+}
+
+function applyTaglineText(text) {
+  const taglineDisplay = document.getElementById('hero-tagline-display');
+  if (taglineDisplay) {
+    taglineDisplay.textContent = text;
+  }
+  document.querySelectorAll('.hero-tagline').forEach(el => {
+    el.textContent = text;
+  });
 }
 
 function updateRecipient(guestOrName) {
   const guestDisplay = document.getElementById('guest-name-display');
-  const taglineDisplay = document.getElementById('hero-tagline-display');
 
   let name = "";
   let tagline = "A Day of Radiance, Glamour & New Beginnings";
 
   if (typeof guestOrName === 'string') {
     name = guestOrName;
-    if (name.trim().toLowerCase() === 'abhi reddy') {
+    if (name.trim().toLowerCase().includes('abhi reddy')) {
       tagline = 'invites SPC';
     }
   } else if (guestOrName && typeof guestOrName === 'object') {
     name = guestOrName.name || '';
     if (guestOrName.tagline) {
       tagline = guestOrName.tagline;
-    } else if (name.trim().toLowerCase() === 'abhi reddy') {
+    } else if (name.trim().toLowerCase().includes('abhi reddy')) {
       tagline = 'invites SPC';
     }
   }
@@ -164,9 +195,7 @@ function updateRecipient(guestOrName) {
   if (guestDisplay && name) {
     guestDisplay.textContent = name;
   }
-  if (taglineDisplay) {
-    taglineDisplay.textContent = tagline;
-  }
+  applyTaglineText(tagline);
 }
 
 function handlePasskeySubmit(event) {
