@@ -34,7 +34,7 @@ const GUEST_REGISTRY = {
 
   // Faculty Roster
   "REVXXIII": { name: "Dr. V. Sowmya Devi" },
-  "REVXXIV": { name: "Nanda Kishore", tagline: "invites cicc" },
+  "REVXXIV": { name: "Nanda Kishore", tagline: "invites CICC" },
   "REVXXV": { name: "Mr. K. Gnaneshwar" },
   "REVXXVI": { name: "Mr. M. Raju" },
   "REVXXVII": { name: "Mrs. N. Sowjanya" },
@@ -159,7 +159,7 @@ function syncTaglineFromDOM() {
     if (currentName.includes('abhi reddy')) {
       applyTaglineText('invites SPC');
     } else if (currentName.includes('nanda kishore')) {
-      applyTaglineText('invites cicc');
+      applyTaglineText('invites CICC');
     }
   }
 }
@@ -186,7 +186,7 @@ function updateRecipient(guestOrName) {
     if (lower.includes('abhi reddy')) {
       tagline = 'invites SPC';
     } else if (lower.includes('nanda kishore')) {
-      tagline = 'invites cicc';
+      tagline = 'invites CICC';
     }
   } else if (guestOrName && typeof guestOrName === 'object') {
     name = guestOrName.name || '';
@@ -196,7 +196,7 @@ function updateRecipient(guestOrName) {
     } else if (lower.includes('abhi reddy')) {
       tagline = 'invites SPC';
     } else if (lower.includes('nanda kishore')) {
-      tagline = 'invites cicc';
+      tagline = 'invites CICC';
     }
   }
 
