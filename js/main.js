@@ -60,7 +60,8 @@ const GUEST_REGISTRY = {
   // Master & Fallback Passcodes
   "000": { name: "Viswanath" },
   "2026": { name: "Viswanath" },
-  "REVERIE": { name: "Class of 2026" }
+  "REVERIE": { name: "Class of 2026" },
+  "INVITE": { name: "", isGeneralInvite: true }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -179,17 +180,24 @@ function updateRecipient(guestOrName) {
 
   let name = "";
   let tagline = "A Day of Radiance, Glamour & New Beginnings";
+  let isNoNameInvite = false;
 
   if (typeof guestOrName === 'string') {
     name = guestOrName;
     const lower = name.trim().toLowerCase();
-    if (lower.includes('abhi reddy')) {
+    if (lower === 'invite') {
+      name = "";
+      isNoNameInvite = true;
+    } else if (lower.includes('abhi reddy')) {
       tagline = 'invites SPC';
     } else if (lower.includes('akshay') || lower.includes('nanda kishore')) {
       tagline = 'invites CICC';
     }
   } else if (guestOrName && typeof guestOrName === 'object') {
     name = guestOrName.name || '';
+    if (guestOrName.isGeneralInvite || name === '') {
+      isNoNameInvite = true;
+    }
     const lower = name.trim().toLowerCase();
     if (guestOrName.tagline) {
       tagline = guestOrName.tagline;
@@ -200,8 +208,14 @@ function updateRecipient(guestOrName) {
     }
   }
 
-  if (guestDisplay && name) {
-    guestDisplay.textContent = name;
+  if (guestDisplay) {
+    if (isNoNameInvite || !name) {
+      guestDisplay.textContent = "";
+      guestDisplay.style.display = "none";
+    } else {
+      guestDisplay.textContent = name;
+      guestDisplay.style.display = "";
+    }
   }
   applyTaglineText(tagline);
 }
@@ -230,7 +244,7 @@ function verifyAndUnseal() {
 
     // Success feedback
     if (feedback) {
-      feedback.textContent = `Welcome, ${guest.name} ✦`;
+      feedback.textContent = guest.name ? `Welcome, ${guest.name} ✦` : `Welcome ✦`;
       feedback.className = 'passkey-feedback success';
     }
 
