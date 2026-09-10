@@ -18,7 +18,7 @@ const GUEST_REGISTRY = {
   "REVVII": { name: "Venky" },
   "REVVIII": { name: "Saharsh" },
   "REVIX": { name: "Aradhya Kadiri" },
-  "REVX": { name: "Abhijeet Raj" },
+  "REVX": { name: "Abhijeet Raj Nalla" },
   "REVXI": { name: "Ernest Paul" },
   "REVXII": { name: "Gandi Charan Tej" },
   "REVXIII": { name: "Akhil Nadukula" },
