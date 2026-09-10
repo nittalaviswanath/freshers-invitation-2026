@@ -37,7 +37,7 @@ const GUEST_REGISTRY = {
   "REVXXIV": { name: "Akshay", tagline: "invites CICC" },
   "REVXXV": { name: "Dr. N.P Seeja" },
   "REVXXVI": { name: "Miss Aruna" },
-  "REVXXVII": { name: "Dr. D. Kondaya" },
+  "REVXXVII": { name: "Dr. T. Ch. Siva Reddy" },
   "REVXXVIII": { name: "Dr. K. Sirisha" },
   "REVXXIX": { name: "Dr. Thota Venkat Narayana Rao" },
   "REVXXX": { name: "Dr. Md. Jaffar Sadiq" },
