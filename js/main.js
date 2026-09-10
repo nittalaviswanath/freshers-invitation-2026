@@ -30,7 +30,7 @@ const GUEST_REGISTRY = {
   "REVXIX": { name: "Sai Sohan" },
   "REVXX": { name: "Nirvigna Sajja" },
   "REVXXI": { name: "Aditi Bera" },
-  "REVXXII": { name: "Abhi Reddy" },
+  "REVXXII": { name: "Abhi Reddy", tagline: "invites SPC" },
 
   // Faculty Roster
   "REVXXIII": { name: "Dr. V. Sowmya Devi" },
@@ -109,24 +109,63 @@ function initPasskeySystem() {
   passInput.classList.add('empty');
   setTimeout(() => passInput.focus(), 300);
 
-  // Check URL parameters for direct link or passcode
+  // Check URL parameters or saved session for direct link or passcode
   const urlParams = new URLSearchParams(window.location.search);
   const codeParam = (urlParams.get('code') || urlParams.get('pass') || '').trim().toUpperCase();
   const nameParam = urlParams.get('name') || urlParams.get('guest');
+  const savedCode = sessionStorage.getItem('reverie_unsealed');
 
   if (codeParam && GUEST_REGISTRY[codeParam]) {
     const guest = GUEST_REGISTRY[codeParam];
     isEnvelopeUnsealed = true;
-    const guestDisplay = document.getElementById('guest-name-display');
-    if (guestDisplay) guestDisplay.textContent = guest.name;
+    updateRecipient(guest);
     const portal = document.getElementById('envelope-portal');
     if (portal) {
       portal.classList.add('portal-unsealed');
       portal.style.display = 'none';
+      document.body.classList.add('invitation-revealed');
+    }
+  } else if (savedCode && GUEST_REGISTRY[savedCode]) {
+    const guest = GUEST_REGISTRY[savedCode];
+    isEnvelopeUnsealed = true;
+    updateRecipient(guest);
+    const portal = document.getElementById('envelope-portal');
+    if (portal) {
+      portal.classList.add('portal-unsealed');
+      portal.style.display = 'none';
+      document.body.classList.add('invitation-revealed');
     }
   } else if (nameParam) {
-    const guestDisplay = document.getElementById('guest-name-display');
-    if (guestDisplay) guestDisplay.textContent = nameParam;
+    updateRecipient(nameParam);
+  }
+}
+
+function updateRecipient(guestOrName) {
+  const guestDisplay = document.getElementById('guest-name-display');
+  const taglineDisplay = document.getElementById('hero-tagline-display');
+
+  let name = "";
+  let tagline = "A Day of Radiance, Glamour & New Beginnings";
+
+  if (typeof guestOrName === 'string') {
+    name = guestOrName;
+    if (name.trim().toLowerCase() === 'abhi reddy') {
+      tagline = 'invites SPC';
+    }
+  } else if (guestOrName && typeof guestOrName === 'object') {
+    name = guestOrName.name || '';
+    if (guestOrName.tagline) {
+      tagline = guestOrName.tagline;
+    } else if (name.trim().toLowerCase() === 'abhi reddy') {
+      tagline = 'invites SPC';
+    }
+  }
+
+  if (guestDisplay && name) {
+    guestDisplay.textContent = name;
+  }
+  if (taglineDisplay) {
+    taglineDisplay.textContent = tagline;
   }
 }
 
@@ -144,16 +183,13 @@ function verifyAndUnseal() {
   const feedback = document.getElementById('passkey-feedback');
   const card = document.getElementById('passkey-card');
   const portal = document.getElementById('envelope-portal');
-  const guestDisplay = document.getElementById('guest-name-display');
 
   if (GUEST_REGISTRY[code]) {
     const guest = GUEST_REGISTRY[code];
     isEnvelopeUnsealed = true;
 
-    // Update guest name in Section 1
-    if (guestDisplay) {
-      guestDisplay.textContent = guest.name;
-    }
+    // Update guest name & tagline in Section 1
+    updateRecipient(guest);
 
     // Success feedback
     if (feedback) {
